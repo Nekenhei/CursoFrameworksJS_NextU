@@ -1,21 +1,53 @@
-// Hemos omitido los acentos en los comentarios por compatibilidad
+var eventosFuturos = []
 
-//Define las variables que necesites
+$(function(){
 
-$(document).ready(function () {
+  //Abriendo JSON
+    $.ajax({
+      url: "info.json"
+    }).done(function(respuesta) {
 
-  //Carga los datos que estan en el JSON (info.json) usando AJAX
+      eventosList = respuesta.eventos
+      fechaActual = respuesta.fechaActual
 
-  //Guarda el resultado en variables
+      //filtrado de eventos por fecha
+      for (let i = 0; i < eventosList.length; i++) {
+        if(eventosList[i].fecha > fechaActual)
+          eventosFuturos.push(eventosList[i])
+      }
 
-  //Selecciona los eventos que sean posteriores a la fecha actual del JSON
+      //ordenado de eventos por fecha
+      eventosFuturos = eventosFuturos.sort(function(x,y){
+        if(x.fecha < y.fecha){
+          return 1
+        }else{
+          return -1
+        }
+      })
 
-  //Ordena los eventos segun la fecha (los mas cercanos primero)
+      imprimirEventos(eventosFuturos)
+      
+    });
 
-  //Crea un string que contenga el HTML que describe el detalle del evento
+function imprimirEventos(eventos) {
+  html=""
 
-  //Recorre el arreglo y concatena el HTML para cada evento
+  for (let i = 0; i < eventos.length; i++) {
+    var nuevaFila = "<tr><th>"+ eventos[i].id +"</th>"+
+    "<td>"+ eventos[i].nombre +"</td>"+
+    "<td>"+ eventos[i].fecha +"</td>"+
+    "<td>"+ eventos[i].descripcion +"</td>"+
+    "<td>"+ eventos[i].lugar +"</td>"+
+    "<td>"+ eventos[i].invitados +"</td>"+
+    "<td>"+ eventos[i].precio +"</td>"+  
+    "</tr>"
 
-  //Modifica el DOM agregando el html generado dentro del div con id=evento
+    html += nuevaFila
+    $("#tablaEventos").append(nuevaFila)
+    
+  }
+  
+}
 
-});
+
+})

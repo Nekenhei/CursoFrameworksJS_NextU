@@ -45,24 +45,24 @@
         
 
           <div class="col-md-6">
-            <label class="form-label" for="nombres">Nombre Completo</label> <span class="text-danger" id="errornombres"></span>
+            <label class="form-label" for="nombres">Nombre Completo</label> <div class="alert alert-danger collapse p-1" role="alert" id="errornNombre"></div>
             <input type="text" class="form-control" id="nombres" placeholder="Nombres y Apellidos" required>
           </div>
           <div class="col-md-6">
-            <label class="form-label" for="email">Email</label> <span class="text-danger" id="errorEmail"></span>
+            <label class="form-label" for="email">Email</label> <div class="alert alert-danger collapse p-1" role="alert" id="errorEmail"></div>
             <input type="email" class="form-control" id="email" placeholder="Email" required>
           </div>
           <div class="col-md-6">
-            <label class="form-label" for="contrasena">Contraseña</label> <span class="text-danger" id="errorContrasena"></span>
+            <label class="form-label" for="contrasena">Contraseña</label> <div class="alert alert-danger collapse p-1" role="alert" id="errorContrasena"></div>
             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required>
           </div>
           <div class="col-md-6">
-            <label class="form-label" for="confirmacion">Contraseña (Confirmación)</label> <span class="text-danger" id="errorConfirmacion"></span>
+            <label class="form-label" for="confirmacion">Contraseña (Confirmación)</label> <div class="alert alert-danger collapse p-1" role="alert" id="errorConfirmacion"></div>
             <input type="password" class="form-control" id="confirmacion" placeholder="Confirmar contraseña" required>
           </div>
 
           <div class="col-md-6">
-            <label class="form-label" for="tipo">Tipo de Usuario</label> <span class="text-danger" id="errorTipo"></span>
+            <label class="form-label" for="tipo">Tipo de Usuario</label> <div class="alert alert-danger collapse p-1" role="alert" id="errorTipo"></div>
             <select id="tipo" class="form-select" required>
               <option value="-1" selected>Seleccione...</option>
               <option value="1">Estudiante</option>
@@ -74,7 +74,7 @@
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="acepto" required>
             <label class="form-check-label" for="acepto">
-              Acepto los términos y condiciones <span class="text-danger" id="errorAcepto"></span>
+              Acepto los términos y condiciones <div class="alert alert-danger collapse p-1" role="alert" id="errorAcepto"></div>
             </label>
           </div>
         </div>

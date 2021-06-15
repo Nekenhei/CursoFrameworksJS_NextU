@@ -1,19 +1,53 @@
-//Define las variables que necesites
+var eventosPasados = []
 
-$(document).ready(function () {
+$(function(){
 
-  //Carga los datos que estan en el JSON (info.json) usando AJAX
+  //Abriendo JSON
+    $.ajax({
+      url: "info.json"
+    }).done(function(respuesta) {
 
-  //Guarda el resultado en variables
+      eventosList = respuesta.eventos
+      fechaActual = respuesta.fechaActual
 
-  //Selecciona los eventos que sean anteriores a la fecha actual del JSON
+      //filtrado de eventos por fecha
+      for (let i = 0; i < eventosList.length; i++) {
+        if(eventosList[i].fecha <= fechaActual)
+          eventosPasados.push(eventosList[i])
+      }
 
-  //Ordena los eventos segun la fecha (los mas recientes primero)
+      //ordenado de eventos por fecha
+      eventosPasados = eventosPasados.sort(function(x,y){
+        if(x.fecha < y.fecha){
+          return 1
+        }else{
+          return -1
+        }
+      })
 
-  //Crea un string que contenga el HTML que describe el detalle del evento
+      imprimirEventos(eventosPasados)
+      
+    });
 
-  //Recorre el arreglo y concatena el HTML para cada evento
+function imprimirEventos(eventos) {
+  html=""
 
-  //Modifica el DOM agregando el html generado
+  for (let i = 0; i < eventos.length; i++) {
+    var nuevaFila = "<tr><th>"+ eventos[i].id +"</th>"+
+    "<td>"+ eventos[i].nombre +"</td>"+
+    "<td>"+ eventos[i].fecha +"</td>"+
+    "<td>"+ eventos[i].descripcion +"</td>"+
+    "<td>"+ eventos[i].lugar +"</td>"+
+    "<td>"+ eventos[i].invitados +"</td>"+
+    "<td>"+ eventos[i].precio +"</td>"+  
+    "</tr>"
 
-});
+    html += nuevaFila
+    $("#tablaEventos").append(nuevaFila)
+    
+  }
+  
+}
+
+
+})

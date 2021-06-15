@@ -1,34 +1,73 @@
-// Hemos omitido los acentos en los comentarios por compatibilidad
+var eventosPasados = []
+var eventosFuturos = []
 
-//Define las variables que necesites
+$(function(){
+
+  //Abriendo JSON
+    $.ajax({
+      url: "info.json"
+    }).done(function(respuesta) {
+
+      eventosList = respuesta.eventos
+      fechaActual = respuesta.fechaActual
+
+      //filtrado de eventos por fecha pasados
+      for (let i = 0; i < eventosList.length; i++) {
+        if(eventosList[i].fecha <= fechaActual)
+          eventosPasados.push(eventosList[i])
+      }
+
+      //filtrado de eventos por fecha futuros
+      for (let i = 0; i < eventosList.length; i++) {
+        if(eventosList[i].fecha <= fechaActual)
+        eventosFuturos.push(eventosList[i])
+      }
+
+      //ordenado de eventos por fecha
+      eventosPasados = eventosPasados.sort(function(x,y){
+        if(x.fecha < y.fecha){
+          return 1
+        }else{
+          return -1
+        }
+      })
+
+      eventosFuturos = eventosPasados.sort(function(x,y){
+        if(x.fecha < y.fecha){
+          return 1
+        }else{
+          return -1
+        }
+      })
 
 
-$(document).ready(function () {
 
-  //Carga los datos que estan en el JSON (info.json) usando AJAX
 
-  //Guarda el resultado en variables
+      imprimirEventos(eventosPasados,"tablaEventosPasados")
+      imprimirEventos(eventosFuturos,"tablaEventosFuturos")
 
-  //Clasifica los eventos segun la fecha actual del JSON
+      
+    });
 
-  //Ordena los eventos segun la fecha (los mas cercanos primero)
+function imprimirEventos(eventos,tabla) {
+  html=""
 
-  //Extrae solo dos eventos
+  for (let i = 0; i < 2; i++) {
+    var nuevaFila = "<tr><th>"+ eventos[i].id +"</th>"+
+    "<td>"+ eventos[i].nombre +"</td>"+
+    "<td>"+ eventos[i].fecha +"</td>"+
+    "<td>"+ eventos[i].descripcion +"</td>"+
+    "<td>"+ eventos[i].lugar +"</td>"+
+    "<td>"+ eventos[i].invitados +"</td>"+
+    "<td>"+ eventos[i].precio +"</td>"+  
+    "</tr>"
 
-  //Ordena los eventos segun la fecha (los mas cercanos primero)
+    html += nuevaFila
+    $("#"+tabla).append(nuevaFila)
+    
+  }
+  
+}
 
-  //Extrae solo dos eventos
 
-  //Crea un string que contenga el HTML que describe el detalle del evento
-
-  //Recorre el arreglo y concatena el HTML para cada evento
-
-  //Modifica el DOM agregando el html generado
-
-  //Crea un string que contenga el HTML que describe el detalle del evento
-
-  //Recorre el arreglo y concatena el HTML para cada evento
-
-  //Modifica el DOM agregando el html generado
-
-});
+})
