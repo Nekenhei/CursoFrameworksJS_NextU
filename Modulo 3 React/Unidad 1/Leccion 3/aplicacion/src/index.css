@@ -1,0 +1,125 @@
+/*Config Generales*/
+
+body{
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Helvetica;
+  background-color: #014F86;
+  color: white;
+}
+
+h1{
+  text-align: center;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+h2{
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+/*Navbar*/
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+li{
+  float: left;
+}
+
+li a{
+  display: block;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #61A5C2;
+  border-radius: 5px 50px 0 0;
+  width: 75px;
+}
+
+li a:hover{
+  background-color: #8ECAE6;
+}
+
+#active{
+  background-color: #012A4A;
+}
+
+.navbar{
+  padding: 0;
+  margin: 0;
+}
+
+/*Contenidos*/
+
+#contenido{
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #012A4A;
+}
+
+#ejercicio2{
+  margin: 5px 0px;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #012A4A;
+}
+
+.formulario{
+  background-color: #89C2D9;
+  width: 500px;
+  height: auto;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  border:3px solid #89C2D9;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*Formulario*/
+
+.form-group{
+  padding: 5px;
+  margin: 0;
+  display: flex;
+  
+}
+
+.form-input{
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus{
+  border: 2px solid #01497C;
+}
+
+.icon{
+  padding: 10px;
+  width: 30px;
+  background-color: #01497C;
+  text-align: center;
+}
+
+.btn {
+  background-color: #01497C;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 20px;
+}
+
+.btn:hover {
+  opacity: 1;
+}
