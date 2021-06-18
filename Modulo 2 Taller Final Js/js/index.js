@@ -19,7 +19,7 @@ $(function(){
 
       //filtrado de eventos por fecha futuros
       for (let i = 0; i < eventosList.length; i++) {
-        if(eventosList[i].fecha <= fechaActual)
+        if(eventosList[i].fecha > fechaActual)
         eventosFuturos.push(eventosList[i])
       }
 
@@ -32,7 +32,7 @@ $(function(){
         }
       })
 
-      eventosFuturos = eventosPasados.sort(function(x,y){
+      eventosFuturos = eventosFuturos.sort(function(x,y){
         if(x.fecha < y.fecha){
           return 1
         }else{
