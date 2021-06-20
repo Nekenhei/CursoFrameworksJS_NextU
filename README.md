@@ -9,7 +9,7 @@ los diferente ejercicios y talleres del certificado
 
 Se trabajaron temas tales como
 
-* JS basico, us de Jquery, tratamiento de JSON con JS
+* JS basico, uso de Jquery, tratamiento de JSON con JS
 * Framework React
 * Framework VUE
 * Proyectos funcionales con cada uno de los 3 modulos (JS, React, VUE)
