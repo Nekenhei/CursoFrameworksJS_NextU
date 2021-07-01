@@ -4,12 +4,15 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Contador from './components/contador/contador'
 import Barra from './components/barra/barra'
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary'
 
 ReactDOM.render(
-<Contador></Contador>, document.getElementById("contador")
+<ErrorBoundary>
+    <Contador />
+</ErrorBoundary>, document.getElementById("contador")
 );
 
-ReactDOM.render(<Barra tiempo='7'/>, document.getElementById("barra"))
+ReactDOM.render(<ErrorBoundary><Barra/></ErrorBoundary>, document.getElementById("barra"))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

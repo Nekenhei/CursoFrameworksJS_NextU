@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 
-class Gantt extends Component{
+
+    
+class Gantt extends Component{    
+
     render(){
         return(
             <div className="row">
@@ -13,9 +16,13 @@ class Gantt extends Component{
                 <div className="row">
                     <div className="col mt-3">
                         <table className="table table-sm  table-striped">
-                            <thead className="bg-primary table-dark" style={{"text-align": "center"}}>
-                                <th scope="col">Actividad</th>
-                                <th scope="col">Progreso</th>
+                            <thead className="table-primary" style={{"textAlign":"center"}}>
+                                <tr>
+                                    <th className="col-2" scope="col">Actividad</th>
+                                    <th className="col-1" scope="col">Esperado</th>
+                                    <th className="col-1" scope="col">Avance</th>
+                                    <th className="col" scope="col">Progreso</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {this.props.children}

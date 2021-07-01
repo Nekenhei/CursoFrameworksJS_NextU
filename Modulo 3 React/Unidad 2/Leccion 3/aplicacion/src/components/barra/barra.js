@@ -18,11 +18,10 @@ class Barra extends Component{
 
     start = () => {
         clearInterval(this.interval)
-        this.interval = setInterval(() => this.tick(),1000)
+        this.interval = setInterval(() => this.tick(),100)
         this.setState({
-            start: true,
             tiempo: this.tiempo.value,
-            contador: 0,
+            contador: null,
             avance: 0,
             fa_spin: 'fa-spin',
             boton_state: 'Iniciado'
@@ -30,7 +29,7 @@ class Barra extends Component{
     }
 
     restart = () => {
-        this.interval = setInterval(() => this.tick(),1000)
+        this.interval = setInterval(() => this.tick(),100)
         this.setState({
             fa_spin: 'fa-spin',
             boton_state: 'Reiniciado'
@@ -54,8 +53,9 @@ class Barra extends Component{
             this.boton_start.className = "btn-group col-2 pb-3"
         }else{
             this.setState((prevState) => ({
-                contador: prevState.contador + 1,
-                avance: ((prevState.contador + 1)/prevState.tiempo)*100
+                contador: prevState.contador + 1/10,
+                avance: ((prevState.contador + 1/10)/prevState.tiempo)*100 > 100 ? 100:
+                        ((prevState.contador +1/10)/prevState.tiempo)*100
             }))
         }
     }
@@ -82,6 +82,24 @@ class Barra extends Component{
             }
         }
     
+    shouldComponentUpdate(nextState){
+        if (nextState.avance !== this.state.avance){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    componentWillMount(){
+        this.setState({
+            contador: 0,
+            tiempo: 0,
+            avance: 0,
+            fa_spin: '',
+            boton_state: ''
+        })
+        clearInterval(this.interval)
+    }
 
     render() {
         return(
@@ -105,15 +123,16 @@ class Barra extends Component{
                 </div>
                 <div className="row">
                     <div className="col">
-                        <p className="font-weight-light">Segundos transcurridos: {this.state.contador}</p>
+                        <p className="font-weight-light">Segundos transcurridos: {this.state.contador.toFixed(0)}</p>
                     </div>
                     <div className="row">
                         <div className="col progress m-3">
                             <p className="pr-2">
                                 <i className={"fa fa-spinner font-size "+this.state.fa_spin} ref = {i => this.spinner = i}></i>
                             </p>
-                            <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.avance+"%"}}>
-                                {this.state.avance.toFixed(2)}%
+                            <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" 
+                            aria-valuemin="0" aria-valuemax="100" style={{width: this.state.avance+"%"}}>
+                                {this.state.avance.toFixed(0)}%
                             </div>
                         </div>
                     </div>
