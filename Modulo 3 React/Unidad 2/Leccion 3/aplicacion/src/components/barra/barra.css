@@ -1,0 +1,22 @@
+.size{
+    width: 250px;
+}
+
+.font-size{
+    font-size: 16px;
+}
+
+
+.hidden{
+    visibility: hidden;
+}
+
+.btn-size{
+    width: 120px;
+}
+
+.position{
+    position: relative;
+    left: 300px;
+    top: 33px;
+  }
