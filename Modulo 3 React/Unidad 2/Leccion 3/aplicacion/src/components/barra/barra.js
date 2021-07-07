@@ -21,7 +21,7 @@ class Barra extends Component{
         this.interval = setInterval(() => this.tick(),100)
         this.setState({
             tiempo: this.tiempo.value,
-            contador: null,
+            contador: 0,
             avance: 0,
             fa_spin: 'fa-spin',
             boton_state: 'Iniciado'
