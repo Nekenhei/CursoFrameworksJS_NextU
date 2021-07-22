@@ -4,39 +4,55 @@ import NuevaTarea from '../components/tareas/nuevaTarea'
 
 export default class TareasVw extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = { tareas: this.tareas }
+    }
+
+    tareas = [{
+        nombre: "Tarea 1",
+        fechaIni: "19/08/2018",
+        fechaFin: "20/08/2018"
+
+    }, {
+        nombre: "Tarea 2",
+        fechaIni: "16/08/2018",
+        fechaFin: "20/08/2018"
+
+    }, {
+        nombre: "Tarea 3",
+        fechaIni: "01/08/2018",
+        fechaFin: "08/08/2018"
+
+    }, {
+        nombre: "Tarea 4",
+        fechaIni: "19/07/2018",
+        fechaFin: "29/07/2018"
+
+    }, {
+        nombre: "Tarea 5",
+        fechaIni: "15/10/2018",
+        fechaFin: "16/10/2018"
+
+    }, {
+        nombre: "Tarea 6",
+        fechaIni: "18/11/2018",
+        fechaFin: "20/08/2019"
+
+    },]
+
+    agregarTarea = (tarea) => {
+        this.setState((prevState) => {
+            const tempTareas = prevState.tareas
+            tempTareas.push(tarea)
+            return { tareas: tempTareas }
+        })
+    }
+
+
+
     render() {
-
-        const tareas = [{
-            nombre: "Tarea 1",
-            fechaIni: "19/08/2018",
-            fechaFin: "20/08/2018"
-
-        },{
-            nombre: "Tarea 2",
-            fechaIni: "16/08/2018",
-            fechaFin: "20/08/2018"
-
-        },{
-            nombre: "Tarea 3",
-            fechaIni: "01/08/2018",
-            fechaFin: "08/08/2018"
-
-        },{
-            nombre: "Tarea 4",
-            fechaIni: "19/07/2018",
-            fechaFin: "29/07/2018"
-
-        },{
-            nombre: "Tarea 5",
-            fechaIni: "15/10/2018",
-            fechaFin: "16/10/2018"
-
-        },{
-            nombre: "Tarea 6",
-            fechaIni: "18/11/2018",
-            fechaFin: "20/08/2019"
-
-        },]
+        const renderTareas = this.state.tareas.map((tarea, index) => { return (<ListaTareas key={index} trIndex={index}>{tarea}</ListaTareas>) })
 
         return (
             <div className="container">
@@ -52,12 +68,11 @@ export default class TareasVw extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {tareas.map((tarea,index) => 
-                            <ListaTareas key={index} trIndex={index}>{tarea}</ListaTareas>)}
+                            {renderTareas}
                         </tbody>
                     </table>
                     <form action="">
-                        <NuevaTarea></NuevaTarea>
+                        <NuevaTarea agregarTarea={this.agregarTarea}></NuevaTarea>
                     </form>
                 </div>
             </div>
